@@ -10,9 +10,9 @@ const AppLogo: React.FC<AppLogoProps> = ({ hasSidebarColor }) => {
   return (
     <StyledAppLogo>
       {hasSidebarColor && sidebarColorSet.mode === "dark" ? (
-        <img src="/assets/images/logo/emedia-logo.png" alt="emedia-logo" />
+             <img src="/assets/images/ecomerce/image_360.png" alt="emedia-logo" />
       ) : (
-        <img src="/assets/images/logo/emedia-logo.png" alt="emedia-logo" />
+        <img src="/assets/images/ecomerce/image_360.png" alt="emedia-logo" />
       )}
     </StyledAppLogo>
   );

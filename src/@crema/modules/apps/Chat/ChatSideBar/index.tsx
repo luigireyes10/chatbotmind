@@ -64,13 +64,7 @@ const ChatSideBar: React.FC<ChatSideBarProps> = ({
         <UserInfo user={user} showStatusActive={true} />
       </StyledChatSidebarUserView>
 
-      <StyledChatSidebarSearchView>
-        <StyledChatSidebarSearch
-          placeholder={messages["common.searchHere"] as string}
-          value={keywords}
-          onChange={(e) => setKeywords(e.target.value)}
-        />
-      </StyledChatSidebarSearchView>
+
 
       <UserTabs
         connectionListData={connectionListData}

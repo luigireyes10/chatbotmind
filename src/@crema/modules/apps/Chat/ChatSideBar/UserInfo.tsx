@@ -119,7 +119,7 @@ const UserInfo: React.FC<UserInfoProps> = ({
       <StyledChatUserInfoContext>
         <StyledChatUserName className="text-truncate">
           {user.displayName || user.name
-            ? user.displayName || user.name
+            ? 'ChatBotMinds' || user.name
             : user.email}
         </StyledChatUserName>
         {user.isGroup ? (

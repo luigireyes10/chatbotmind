@@ -15,7 +15,7 @@ export const StyledHeaderLogo = styled.div`
   right: calc(100% + 15px);
   align-items: center;
   justify-content: center;
-  width: 60px;
+  width: 200px;
   height: auto;
   top: -15px;
 `;

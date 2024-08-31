@@ -232,21 +232,6 @@ const AppHeader: React.FC<Props> = ({ isCollapsed, onToggleSidebar }) => {
       <StyledHeaderColumn>
         <StyledHeaderIconsColumn>
         
-      <CustomStyledAppSelect
-        defaultValue={defaultValue}
-        value={selectionType}
-        onChange={handleSelectionType} >
-        {ValueCategoria?.map((categoria, index) => {
-          console.log(categoria)
-          return (
-          <StyledOption
-            key={index}
-            value={categoria?.ID_CLASIFICACION}
-            >
-            { categoria?.DESCRIPCION}
-          </StyledOption>
-        )})}
-       </CustomStyledAppSelect>
 
 
 
@@ -264,48 +249,7 @@ const AppHeader: React.FC<Props> = ({ isCollapsed, onToggleSidebar }) => {
        </CustomStyledAppSelect> */}
 
         
-          <div
-          style={{ width: '80%', display: 'inline-flex' ,   }}
-          >
-          <StyledCreatePostInput
-            value={message}
-            onChange={handleChange}
-            placeholder={messages["common.searchHere"].toString()}
-            
-            suffix={
-              <>
-                <StyledCreatePostAction style={{ borderRadius:"20px 20px", backgroundColor:"#3635356e",}}>
-                 
-                  <AppIconButton
-                    // doesn't not apply the styles bg-gray-200
-                    className="text-sm font-medium text-gray-900" style={{ backgroundColor: 'lightblue' }}
-                    // disabled={!message.trim() && attachments.length === 0}
-                    icon={<SearchOutlined />}
-                  />
-                </StyledCreatePostAction>
-
-         
-              </>
-            }
-          />
-          {loading ? (
-          <Spin />
-           ) : (
-        searchResults.length > 0 && (
-          <List
-            style={{ position: 'absolute', top: '73%', width: '56%',  backgroundColor: 'white', zIndex: 1, borderRadius: '0 0 20px 20px' }}
-            dataSource={searchResults}
-            renderItem={(item) => (
-              <List.Item onClick={() => setMessage(item?.DESC_PRODUCTO)}>
-                {item?.DESC_PRODUCTO}
-              </List.Item>
-              )}
-             />
-           )
-         )}
-
-            </div>
-        
+      
         
           <StyledAppHeaderSectionMobile>
             <StyledDropdownWrapper>

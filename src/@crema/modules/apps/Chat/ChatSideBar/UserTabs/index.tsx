@@ -8,7 +8,7 @@ import { StyledChatSidebarTabs, StyledTabItem } from "../index.styled";
 import { ConnectionObjType } from "@crema/types/models/apps/Chat";
 
 const tabs = [
-  { id: 333, name: <IntlMessages id="dashboard.messages" /> },
+  { id: 333, name: 'Conversaciones'},
   { id: 323, name: <IntlMessages id="chatApp.contacts" /> },
 ];
 
@@ -45,23 +45,7 @@ const UserTabs: React.FC<UserTabsProps> = ({
         />
       ),
     }, // remember to pass the key prop
-    {
-      label: (
-        <StyledTabItem>
-          <BiUserPin />
-          {tabs[1].name}
-        </StyledTabItem>
-      ),
-      key: "2",
-      children: (
-        <ConnectionList
-          connectionListData={connectionListData}
-          loading={loading}
-          setSelectedUser={setSelectedUser}
-          selectedUser={selectedUser}
-        />
-      ),
-    },
+   
   ];
   return <StyledChatSidebarTabs defaultActiveKey="1" items={items} />;
 };

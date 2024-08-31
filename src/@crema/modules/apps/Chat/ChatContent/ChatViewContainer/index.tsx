@@ -242,15 +242,7 @@ const MessagesScreen: React.FC<MessagesScreenProps> = ({
 
   return (
     <StyledMessageScreen>
-      <AppsHeader>
-        <Header
-          isChecked={isChecked}
-          onChangeStarred={onChangeStarred}
-          selectedUser={selectedUser as ConnectionObjType}
-          deleteConversation={deleteConversation}
-          clearChatHistory={clearChatHistory}
-        />
-      </AppsHeader>
+     
 
       {/* {userMessages && user ? ( */}
         <StyledMsgScreenScrollbar ref={_scrollBarRef as any}>
