@@ -25,7 +25,7 @@ export default function MyApp(props: AppProps) {
 
   const link = createUploadLink({
     // uri: 'https://l8378ppz-4005.use2.devtunnels.ms/graphql',
-    uri: "http://1localhost:4006/graphql",
+    uri: "http://1localhost:4005/graphql",
     // uri:'https://tr2wdsbj-4005.use2.devtunnels.ms/graphql',
     //uri: 'https://ws.vegamovil.com:4005/graphql',
     // uri: 'http://192.168.1.148:4000/graphql',
