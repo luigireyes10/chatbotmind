@@ -94,6 +94,7 @@ import { MUTATIO_WHATSAPP_SEND_MESSAGE } from "utils/Mutations/Administrative";
     };
 
     const [whatsappSender] = useMutation(MUTATIO_WHATSAPP_SEND_MESSAGE);
+console.log("holasd");
 
 
     const onClickSendMessage = async () => {

@@ -86,6 +86,26 @@ const MessagesList: React.FC<MessagesListProps> = ({
   }, []);
 
   useEffect(() => {
+ 
+    socket.on('message-received-ia', (response) => {
+      // Verificar si el mensaje recibido es del mismo usuario que envió el mensaje
+      console.log('Mensaje recibido del servidor:', response);
+      const user = "66411fc7f5a1513e647b28d3"
+      if (response.user !==  myUserId) {
+        // Agregar el mensaje a UserMessages cuando lo recibas del servidor
+        setUserMessages((prevMessages) => [...prevMessages, response]);
+      }
+      else {
+        console.log('Mensaje recibido del mismo usuario que envió el mensaje');
+      }
+    });
+    return () => {
+      socket.off("message-received-ia");
+      socket.close();
+    };
+  }, []);
+
+  useEffect(() => {
     scrollToBottom();
   }, [UserMessages]);
 
