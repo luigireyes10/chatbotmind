@@ -1,11 +1,3 @@
-import SignupFirebase from './SignupFirebase';
-// import SignupAwsCognito from './SignupAwsCognito';
-// import SignupJwtAuth from './SignupJwtAuth';
-// import ConfirmSignupAwsCognito from './SignupJwtAuth';
+import { SignupFirebase } from "@crema/modules/auth/Signup";
 
-export {
-  SignupFirebase,
-  // SignupAwsCognito,
-  // SignupJwtAuth,
-  // ConfirmSignupAwsCognito,
-};
+export default SignupFirebase;

@@ -1,6 +1,4 @@
- import SignInFirebase from './SigninFirebase';
-import SignInAuth0 from './SignInAuth0';
-// import SigninAwsCognito from './SigninAwsCognito';
-// import SigninJwtAuth from './SigninJwtAuth';
+import { SignInFirebase } from "@crema/modules/auth/Signin";
+// import { SignInAuth0 } from "@crema/modules/auth/Signin";
 
-export { SignInAuth0/*, SigninAwsCognito, SigninJwtAuth, SignInFirebase*/ };
+export default SignInFirebase;

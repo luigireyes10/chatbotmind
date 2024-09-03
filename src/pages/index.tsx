@@ -1,6 +1,8 @@
- import SignInFirebase from './SigninFirebase';
-import SignInAuth0 from './SignInAuth0';
-// import SigninAwsCognito from './SigninAwsCognito';
-// import SigninJwtAuth from './SigninJwtAuth';
+import React from "react";
+import AppPage from "@crema/core/DefaultPage";
+import asyncComponent from "@crema/components/AppAsyncComponent";
 
-export { SignInAuth0/*, SigninAwsCognito, SigninJwtAuth, SignInFirebase*/ };
+const SignIn = asyncComponent(() => import("../modules/auth/Signin"), {
+  ssr: false,
+});
+export default AppPage(() => <SignIn />);
