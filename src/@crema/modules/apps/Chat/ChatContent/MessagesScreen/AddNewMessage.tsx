@@ -122,7 +122,7 @@ console.log("holasd");
           }
           
          
-     socket.emit('new-message', message, function(response) {
+     socket.emit('new-message', responseMessages, function(response) {
             console.log('Respuesta del servidor:', response);
          
            });

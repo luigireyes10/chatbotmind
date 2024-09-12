@@ -116,6 +116,9 @@ const ReceiverMessageItem: React.FC<ReceiverMessageItemProps> = ({
   item,
 }) => {
   const [index, setIndex] = useState(-1);
+console.log(item);
+console.log(isPreviousSender);
+console.log(isLast);
 
   const onClose = () => {
     setIndex(-1);

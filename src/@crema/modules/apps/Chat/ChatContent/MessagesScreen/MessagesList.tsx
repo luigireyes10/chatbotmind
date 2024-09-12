@@ -62,52 +62,72 @@ const MessagesList: React.FC<MessagesListProps> = ({
     };
 
     fetchMessages();
-  }, [selectedUser, authUser]);
+  }, []);
 
 
   useEffect(() => {
- 
-    socket.on('message-received', (message) => {
-      // Verificar si el mensaje recibido es del mismo usuario que envió el mensaje
+    const handleMessageReceived = (message) => {
       console.log('Mensaje recibido del servidor:', message);
       
-      if (message.myUserId !==  myUserId) {
-        // Agregar el mensaje a UserMessages cuando lo recibas del servidor
-        setUserMessages((prevMessages) => [...prevMessages, message]);
-      }
-      else {
-        console.log('Mensaje recibido del mismo usuario que envió el mensaje');
-      }
-    });
-    return () => {
-      socket.off("message-received");
-      socket.close();
-    };
-  }, []);
+      if (message.myUserId !== myUserId) {
+               const newMessage = {
+          from: message.message.data?.from,
+          to: message.message.data?.to,
+          message: message.message.data?.message,
+          Estado: message.message.data?.Estado,
+          message_type: message.message.data?.message_type,
+          read: message.message.data?.read,
+          _id: message.message.data?._id,
+          createdAt: message.message.data?.createdAt,
+          updatedAt: message.message.data?.updatedAt,
+        };
 
-  useEffect(() => {
- 
-    socket.on('message-received-ia', (response) => {
-      // Verificar si el mensaje recibido es del mismo usuario que envió el mensaje
-      console.log('Mensaje recibido del servidor:', response);
-      const user = "66411fc7f5a1513e647b28d3"
-      if (response.user !==  myUserId) {
-        // Agregar el mensaje a UserMessages cuando lo recibas del servidor
-        setUserMessages((prevMessages) => [...prevMessages, response]);
-      }
-      else {
+        setUserMessages((prevMessages) => [...prevMessages, newMessage]);
+      } else {
         console.log('Mensaje recibido del mismo usuario que envió el mensaje');
       }
-    });
-    return () => {
-      socket.off("message-received-ia");
-      socket.close();
     };
-  }, []);
+
+    const handleMessageReceivedIA = (response) => {
+      console.log('Mensaje recibido del servidor:', response);
+      
+      if (response.user !== myUserId) {
+        let nlResponse;
+        try {
+          nlResponse = JSON.parse(response.nl_response);
+        } catch (e) {
+          nlResponse = response.nl_response;
+        }
+
+        const newMessage = {
+          from: '66411fc7f5a1513e647b28d3',
+          to: '66411fdef5a1513e647b28d8',
+          message: nlResponse.nl_response,
+          Estado: 'Active',
+          message_type: 2,
+          read: true,
+        };
+
+        setUserMessages((prevMessages) => [...prevMessages, newMessage]);
+      } else {
+        console.log('Mensaje recibido del mismo usuario que envió el mensaje');
+      }
+    };
+
+    socket.on('message-received', handleMessageReceived);
+    socket.on('message-received-ia', handleMessageReceivedIA);
+
+    return () => {
+      socket.off('message-received', handleMessageReceived);
+      socket.off('message-received-ia', handleMessageReceivedIA);
+    };
+  }, [myUserId]);
+
 
   useEffect(() => {
     scrollToBottom();
   }, [UserMessages]);
+console.log(UserMessages);
 
   return (
     <StyledChatMsgList>
