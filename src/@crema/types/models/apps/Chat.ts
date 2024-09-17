@@ -1,6 +1,7 @@
 export enum MessageType {
   MEDIA = 1,
   TEXT = 2,
+  TABLE = 3,
 }
 
 export type MemberType = {

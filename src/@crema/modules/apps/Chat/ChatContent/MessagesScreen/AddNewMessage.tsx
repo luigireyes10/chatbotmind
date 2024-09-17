@@ -15,6 +15,7 @@
   import socket from 'pages/socket' 
 import { useMutation } from "@apollo/client";
 import { MUTATIO_WHATSAPP_SEND_MESSAGE } from "utils/Mutations/Administrative";
+import styled from "styled-components";
 
 
   type AddNewMessageProps = {
@@ -95,7 +96,11 @@ import { MUTATIO_WHATSAPP_SEND_MESSAGE } from "utils/Mutations/Administrative";
 
     const [whatsappSender] = useMutation(MUTATIO_WHATSAPP_SEND_MESSAGE);
 console.log("holasd");
-
+const [selectedUrl, setSelectedUrl] = useState('https://unirmindbotspoc-qa.azurewebsites.net/api/SarchDocumentsTest');
+console.log(selectedUrl);
+const handleSelectChange = (event) => {
+  setSelectedUrl(event.target.value);
+};
 
     const onClickSendMessage = async () => {
       if (message && socket ) {
@@ -106,22 +111,28 @@ console.log("holasd");
       
     
         
+
      
         try {
-          const responseMessages = await axios.post('http://localhost:4005/api/messages', {
+          // const responseMessages = await axios.post('http://localhost:4005/api/messages', {
+          //   message: message,
+          //   to: selectedUserId,
+          //   from:'66411fdef5a1513e647b28d8',
+          //   url: selectedUrl,
+          
+          // });
+          
+          // if (responseMessages.status === 200) {
+          //   console.log('Mensaje guardado en la base de datos de mensajes y enviado al destinatario');
+          // } else {
+          //   console.log('Hubo un problema al guardar el mensaje en la base de datos de mensajes');
+          // }
+          const responseMessages = {
             message: message,
             to: selectedUserId,
             from:'66411fdef5a1513e647b28d8',
-          
-          });
-          
-          if (responseMessages.status === 200) {
-            console.log('Mensaje guardado en la base de datos de mensajes y enviado al destinatario');
-          } else {
-            console.log('Hubo un problema al guardar el mensaje en la base de datos de mensajes');
+            url: selectedUrl,
           }
-          
-         
      socket.emit('new-message', responseMessages, function(response) {
             console.log('Respuesta del servidor:', response);
          
@@ -261,9 +272,41 @@ console.log("holasd");
         }
       };
     }, [socket]);
+    const StyledSelect = styled.select`
+    position: fixed;
+    cursor: pointer; 
+    top: 20px;
+    left: 0;
+    background-color: #ffffff52; /* Ajusta el color de fondo según sea necesario */
+    z-index: 10020; /* Asegúrate de que esté por encima de otros elementos */
+    padding: 10px; /* Ajusta el padding según sea necesario */
+    font-family: 'Roboto', sans-serif; /* Aplica la fuente Roboto */
+    font-size: 16px; /* Ajusta el tamaño de la fuente según sea necesario */
+    border: 1px solid #ccc; /* Añade un borde */
+    border-radius: 4px; /* Añade un borde redondeado */
+  `;
+  const StyledOption = styled.option`
+    padding: 10px; /* Ajusta el padding según sea necesario */
+    font-family: 'Roboto', sans-serif; /* Aplica la fuente Roboto */
+    font-size: 16px; /* Ajusta el tamaño de la fuente según sea necesario */
+    cursor: pointer;  
+  `;
+  
+  const SelectContainer = styled.div`
+    display: flex;
+   
+    margin-top: 20px;
+  `;
+  
 
     return (
       <StyledAddNewMessage>
+       <SelectContainer>
+        <StyledSelect name="" id="" onChange={handleSelectChange}>
+          <StyledOption value="https://unirmindbotspoc-qa.azurewebsites.net/api/SarchDocumentsTest">Chat conversación</StyledOption>
+          <StyledOption value="https://unirmindbotspoc-qa.azurewebsites.net/api/FindSQL">Chat sql</StyledOption>
+        </StyledSelect>
+      </SelectContainer>
         <StyledNewMsgActionFirst>
         
         <Button
@@ -298,7 +341,6 @@ console.log("holasd");
           }}
           onKeyPress={onKeyPress}
         />
-
         <StyledNewMessageAction>
           <Button className="message-btn " onClick={onClickSendMessage} >
             <SendOutlined />

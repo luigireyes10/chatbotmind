@@ -66,6 +66,7 @@ const Header: React.FC<HeaderProps> = ({
 
   return (
     <StyledChatHeader>
+      
       <UserInfo user={selectedUser} showStatus={true} />
       <StyledChatHeaderAction>
         <AppIconButton
