@@ -96,7 +96,7 @@ import styled from "styled-components";
 
     const [whatsappSender] = useMutation(MUTATIO_WHATSAPP_SEND_MESSAGE);
 console.log("holasd");
-const [selectedUrl, setSelectedUrl] = useState('https://unirmindbotspoc-qa.azurewebsites.net/api/SarchDocumentsTest');
+const [selectedUrl, setSelectedUrl] = useState('https://unirmindbotspoc-qa.azurewebsites.net/api/SarchDocuments');
 console.log(selectedUrl);
 const handleSelectChange = (event) => {
   setSelectedUrl(event.target.value);
@@ -303,7 +303,7 @@ const handleSelectChange = (event) => {
       <StyledAddNewMessage>
        <SelectContainer>
         <StyledSelect name="" id="" onChange={handleSelectChange}>
-          <StyledOption value="https://unirmindbotspoc-qa.azurewebsites.net/api/SarchDocumentsTest">Chat conversación</StyledOption>
+          <StyledOption value="https://unirmindbotspoc-qa.azurewebsites.net/api/SarchDocuments">Chat conversación</StyledOption>
           <StyledOption value="https://unirmindbotspoc-qa.azurewebsites.net/api/FindSQL">Chat sql</StyledOption>
         </StyledSelect>
       </SelectContainer>
